@@ -11,10 +11,7 @@ function getPlayerMove() {
 }
 
 
-// These should be two separate functions, one called randomPlay with returns rock or paper or scissors,
-// and getComputerMove which calls random play for you.
-function getComputerMove() {
-    function randomPlay() {
+function randomPlay() {
         var randomNumber = Math.random();
         if (randomNumber < 0.33) {
             return "rock";
@@ -25,12 +22,15 @@ function getComputerMove() {
         }
     }
 
+function getComputerMove() {
+    randomPlay();
+
 }
 
 // console.log will give you fewer problems than document.write in this program
 function getWinner(playerMove, computerMove) {
     if (playerMove === computerMove) {
-        document.write("We have a tie.");
+        console.log("We have a tie.");
     }
 
     if (playerMove === "rock" && computerMove === "scissors") {
