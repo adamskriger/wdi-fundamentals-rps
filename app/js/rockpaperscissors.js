@@ -1,68 +1,87 @@
-// It's much easier to read this code when it's formatted: you can paste it into jsbeautifier.org for tidying
-// It's better to format it nicely as you write it.
+'use strict';
 
-var playerWins = 0;
-var computerWins = 0;
+var playerScore = 0; 
+var computerScore = 0; 
+var playerMove; 
+var computerMove;
 
 function getPlayerMove() {
-    var playerMove = prompt("Please choose either rock, paper, or scissors");
-    // You need to return the playerMove so you can use it elsewhere in the program
-    return playerMove;
+    playerMove = prompt('Choose "rock", "scissors", or "paper"');
+    return playerMove.toLowerCase(); 
 }
 
 
 function randomPlay() {
-        var randomNumber = Math.random();
-        if (randomNumber < 0.33) {
-            return "rock";
-        } else if (randomNumber < 0.66) {
-            return "paper";
-        } else {
-            return "scissors";
-        }
+    var randomNumber = Math.random(); 
+    
+    if (Math.random < .33) {
+    return "rock";
     }
-
-function getComputerMove() {
-    randomPlay();
-
+    else if (Math.random < .66) {
+    return "paper";
+    }
+    else if (Math.random < 1){
+    return "scissors";
+    }
 }
 
-// console.log will give you fewer problems than document.write in this program
-function getWinner(playerMove, computerMove) {
-    if (playerMove === computerMove) {
-        console.log("We have a tie.");
-    }
+function getComputerMove() {
+    computerMove = randomPlay();
+}
 
-    if (playerMove === "rock" && computerMove === "scissors") {
-        return playerWins++;
-    } else if (playerMove === "rock" && computerMove === "paper") {
-        return computerWins++;
-    }
 
-    if (playerMove === "paper" && computerMove === "rock") {
-        return playerWins++;
-    } else if (playerMove === "paper" && computerMove === "scissors") {
-        return computerWins++;
-    }
+function getWinner(playerMove, ComputerMove) {
+if (playerMove === "rock" && computerMove === "rock") {
+    console.log("The result is a tie");
+}
+else if (playerMove === "rock" && computerMove === "scissors") {
+    console.log("Player Wins")
+    playerScore++;
+}
 
-    if (playerMove === "scissors" && computerMove === "paper") {
-        return playerWins++;
-    } else if (playerMove === "scissors" && computerMove === "rock") {
-        return computerWins++;
-    }
+else if (playerMove === "rock" && computerMove === "paper"){
+    console.log("Computer Wins");
+    computerScore++; 
+}
 
+else if (playerMove === "paper" && computerMove === "paper") {
+    console.log("The result is a tie");
+}
+else if (playerMove === "paper" && computerMove === "rock") {
+    console.log("Player Wins");
+    playerScore ++; 
+}
+else if (playerMove === "paper" && computerMove ==="scissors" ) {
+    console.log("computer wins");
+    computerScore++; 
+}
+else if (playerMove === "scissors" && computerMove === "scissors") {
+    console.log("The result is a tie");
+}
+else if (playerMove = "scissors" && computerMove === "paper") {
+    console.log("Player Wins");
+    playerScore++; 
+}
+else if (playerMove === "scissors" && computerMove === "rock") {
+    console.log("Computer Wins");
+    computerScore++; 
+}
 }
 
 function playToFive() {
 
-    while (playerWins < 5 || computerWins < 5) {
-        // These need parentheses after them to actually call the functions,
-        // and you need to capture the return values in variables to pass them to getWinner
-        var playerMove = getPlayerMove();
-        var computerMove = getComputerMove();
-        getWinner(playerMove, computerMove);
-    }
+    while ((playerScore < 5) || (computerScore < 5) ) {
 
+        var player = getPlayerMove();
+        var computer = getComputerMove();
+        var winner = getWinner(playerMove, computerMove);
+        console.log("The computer move is " + computerMove)
 
+        console.log("The player's score is " + playerScore);
+        console.log("The computer's score is " + computerScore);
 }
-playToFive();
+}
+
+playToFive(); 
+
+
